@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import { Auth } from "./pages/auth/auth";
+import { Chat } from "./pages/chat/chat";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const links = {
+  auth: '/',
+  chat: '/chat'
 }
 
-export default App;
+const routes = [
+  { path: links.auth, element: <Auth /> },
+  { path: links.chat, element: <Chat /> },
+];
+
+const router = createBrowserRouter(routes);
+
+export const App = () => {
+  return <RouterProvider router={router} />;
+};
