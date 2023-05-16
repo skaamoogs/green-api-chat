@@ -1,16 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { Auth } from "./pages/auth/auth";
-import { Chat } from "./pages/chat/chat";
+import { ChatPage } from "./pages/chat-page/chat-page";
 
 export const links = {
-  auth: '/',
-  chat: '/chat'
-}
+  auth: "/",
+  chat: "/chat",
+};
 
 const routes = [
   { path: links.auth, element: <Auth /> },
-  { path: links.chat, element: <Chat /> },
+  { path: links.chat, element: <ChatPage /> },
 ];
 
 const router = createBrowserRouter(routes);

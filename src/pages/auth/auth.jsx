@@ -36,7 +36,7 @@ export const Auth = () => {
     <div className={style.wrapper}>
       <div className={style.container}>
         <h1>Введите учетные данные</h1>
-        <form>
+        <form onSubmit={submitHandler}>
           {inputs.map((input) => (
             <Input
               key={input.name}
@@ -46,9 +46,7 @@ export const Auth = () => {
               onChange={changeInputHandler}
             />
           ))}
-          <Button onClick={submitHandler} type="submit">
-            Нажми на меня!!!
-          </Button>
+          <Button type="submit">Нажми на меня!!!</Button>
         </form>
       </div>
     </div>
