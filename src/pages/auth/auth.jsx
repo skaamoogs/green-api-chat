@@ -4,16 +4,18 @@ import { Input } from "../../components/input/input";
 import style from "./auth.module.scss";
 import { useNavigate } from "react-router-dom";
 import { links } from "../../App";
+import GreenAPIController from "../../controllers/greenAPI.controller";
+import { AUTH_FIELDS } from "../../api/greenAPI.api";
 
 const inputs = [
   {
-    name: "idInstance",
-    label: "idInstance",
+    name: AUTH_FIELDS.id,
+    label: AUTH_FIELDS.id,
     type: "number",
   },
   {
-    name: "apiTokenInstance",
-    label: "apiTokenInstance",
+    name: AUTH_FIELDS.token,
+    label: AUTH_FIELDS.token,
     type: "password",
   },
 ];
@@ -24,7 +26,8 @@ export const Auth = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    navigate(links.chat);
+    GreenAPIController.setSettings(formFields);
+    //navigate(links.chat);
   };
 
   const changeInputHandler = (event) => {
@@ -44,6 +47,7 @@ export const Auth = () => {
               label={input.label}
               value={formFields[input.name] ?? ""}
               onChange={changeInputHandler}
+              required
             />
           ))}
           <Button type="submit">Нажми на меня!!!</Button>

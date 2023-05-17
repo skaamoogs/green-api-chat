@@ -6,21 +6,36 @@ import { Chat } from "./chat/chat";
 
 export const ChatPage = () => {
   const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
   const [chats, setChats] = useState([]);
 
   const typeMessage = (event) => {
     setMessage(event.target.value);
   };
 
-  //const
+  const typePhone = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const createChat = () => {
+    if (!chats.includes(phone)) {
+      setChats((prevState) => [...prevState, phone]);
+    }
+  };
 
   return (
     <div className={style.wrapper}>
       <div className={style.chatListContainer}>
-        <div className={style.createChatContainer}>
-          <Input label="Телефон получателя" />
+        <form className={style.createChatForm} onSubmit={createChat}>
+          <Input
+            label="Телефон получателя"
+            type="tel"
+            onChange={typePhone}
+            value={phone}
+            required
+          />
           <Button type="submit">Создать чат</Button>
-        </div>
+        </form>
         <div className={style.chatList}>
           {chats.map((chat) => (
             <Chat />
@@ -33,7 +48,6 @@ export const ChatPage = () => {
         <form className={style.sendMessageContainer}>
           <Input
             name="message"
-            type="submit"
             value={message}
             onChange={typeMessage}
             placeholder="Сообщение"

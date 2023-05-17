@@ -1,7 +1,7 @@
 import style from "./input.module.scss";
 
 export const Input = (props) => {
-  const { label, value, name, type, placeholder, onChange } = props;
+  const { label, value, name, type, placeholder, onChange, required } = props;
 
   return (
     <div className={style.container}>
@@ -12,6 +12,7 @@ export const Input = (props) => {
         onChange={onChange}
         name={name}
         placeholder={placeholder}
+        required={required}
       />
     </div>
   );
