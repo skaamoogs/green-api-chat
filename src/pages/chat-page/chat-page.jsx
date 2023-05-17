@@ -1,13 +1,23 @@
 import { useState } from "react";
 import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
+import GreenAPIController from "../../controllers/greenAPI.controller";
 import style from "./chat-page.module.scss";
 import { Chat } from "./chat/chat";
+import { AUTH_FIELDS } from "../../api/greenAPI.api";
+
+const notificationsSubscribe = async () => {
+  GreenAPIController.receiveNotificationSubscribe({
+    [AUTH_FIELDS.id]: "1101820705",
+    [AUTH_FIELDS.token]: "3b70bfc2a16a4b488ecfcf78a9547a0b5d8696730dd546439c",
+  });
+};
 
 export const ChatPage = () => {
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState({});
+  const [currentChatId, setCurrentChatId] = useState("");
 
   const typeMessage = (event) => {
     setMessage(event.target.value);
@@ -17,10 +27,16 @@ export const ChatPage = () => {
     setPhone(event.target.value);
   };
 
-  const createChat = () => {
-    if (!chats.includes(phone)) {
-      setChats((prevState) => [...prevState, phone]);
+  const createChat = (event) => {
+    event.preventDefault();
+    if (!Object.keys(chats).includes(phone)) {
+      setChats((prevState) => ({ ...prevState, [phone]: {} }));
     }
+  };
+
+  const chooseChat = (phone) => {
+    setCurrentChatId(`${phone}@c.us`);
+    notificationsSubscribe();
   };
 
   return (
@@ -37,8 +53,8 @@ export const ChatPage = () => {
           <Button type="submit">Создать чат</Button>
         </form>
         <div className={style.chatList}>
-          {chats.map((chat) => (
-            <Chat />
+          {Object.keys(chats).map((phone) => (
+            <Chat phone={phone} clickHandler={chooseChat} />
           ))}
         </div>
       </div>
@@ -52,7 +68,7 @@ export const ChatPage = () => {
             onChange={typeMessage}
             placeholder="Сообщение"
           />
-          <button type="submit" className={style.sendButton} s>
+          <button type="submit" className={style.sendButton}>
             <img src="./send.svg" alt="send icon" />
           </button>
         </form>
