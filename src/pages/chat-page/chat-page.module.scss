@@ -1,0 +1,14 @@
+@import "../../styles/globals.scss";
+@import "../../styles/mixin.scss";
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.chatListContainer {
+  width: 400px;
+  height: 100%;
+  background-color: #FBFBFB;
+}

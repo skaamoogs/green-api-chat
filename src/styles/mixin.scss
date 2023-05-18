@@ -1,0 +1,22 @@
+// Шрифты
+@mixin text-lg {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+@mixin text-md {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+@mixin text-sm {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+@mixin font-family {
+  font-family: 'Manrope', sans-serif;
+}

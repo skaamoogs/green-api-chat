@@ -1,0 +1,40 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/globals.scss";
+
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $text-base;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 50px 30px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  background-color: $bg-primary;
+}
+
+.title {
+  text-align: center;
+  @include text-lg;
+  margin-bottom: 40px;
+}
+
+.input {
+  margin-bottom: 16px;
+}
+
+.button {
+  margin-top: 60px;
+  color: $text-base;
+}
+
+.error {
+  color: $text-error;
+}

@@ -1,3 +1,18 @@
+@import "../../styles/globals.scss";
+@import "../../styles/mixin.scss";
+
 .button {
-  
+  @include font-family;
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: $main-color;
+  @include text-md;
+
+  &:hover {
+    background-color: $main-hover-color;
+  }
 }
