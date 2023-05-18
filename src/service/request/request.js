@@ -73,22 +73,14 @@ export default class RequestTransport {
     }
 
     const response = await fetch(url, {
-      mode: "no-cors",
       method,
       headers,
-      credentials: "include",
       body: data instanceof FormData ? data : JSON.stringify(data),
       signal: controller.signal,
     });
 
     clearTimeout(id);
 
-    console.log(response);
-
-    const contentType = response.headers.get("content-type");
-    const isResponseJson =
-      contentType && contentType.indexOf("application/json") >= 0;
-
-    return isResponseJson ? response.json() : response.text();
+    return response;
   };
 }

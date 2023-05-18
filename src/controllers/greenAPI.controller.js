@@ -10,39 +10,45 @@ class GreenAPIController {
       const response = await this.api.setSettings(authParams, {
         webhookUrl: "",
         outgoingWebhook: "yes",
-        stateWebhook: "yes",
+        stateWebhook: "no",
         incomingWebhook: "yes",
       });
-      if (response && response.saveSettings) {
-        console.log("settings saved");
+      if (response.status === 200) {
+        const data = await response.json();
+        if (data && data.saveSettings) {
+          console.log("Настройки сохранены");
+          return true;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    console.log("Некорректные данные");
+  }
+
+  async receiveNotification(authParams) {
+    try {
+      const response = await this.api.receiveNotification(authParams);
+      if (response.status === 502) {
+        await this.receiveNotification(authParams);
+      } else if (response.status !== 200) {
+        console.log(response.statusText);
+
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await this.receiveNotification(authParams);
       } else {
-        console.log(response);
+        console.log(response.status);
+        console.log(await response.json());
+        //await this.api.deleteNotification(authParams, 1)
+        //await this.receiveNotification(authParams);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  async receiveNotificationSubscribe(authParams) {
-    try {
-      const response = await this.api.receiveNotification(authParams);
-      console.log(response);
-      if (response.status === 502) {
-        await this.receiveNotificationSubscribe(authParams);
-      } else if (response.status !== 200) {
-        console.log(response.statusText);
+  async deleteNotification(authParams, receptId) {
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        await this.receiveNotificationSubscribe(authParams);
-      } else {
-        console.log(await response.text());
-        await this.receiveNotificationSubscribe(authParams);
-        // И снова вызовем subscribe() для получения следующего сообщения
-        await this.receiveNotificationSubscribe(authParams);
-      }
-    } catch (error) {
-      console.log(error);
-    }
   }
 }
 

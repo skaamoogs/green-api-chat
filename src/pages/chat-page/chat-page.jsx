@@ -6,11 +6,9 @@ import style from "./chat-page.module.scss";
 import { Chat } from "./chat/chat";
 import { AUTH_FIELDS } from "../../api/greenAPI.api";
 
-const notificationsSubscribe = async () => {
-  GreenAPIController.receiveNotificationSubscribe({
-    [AUTH_FIELDS.id]: "1101820705",
-    [AUTH_FIELDS.token]: "3b70bfc2a16a4b488ecfcf78a9547a0b5d8696730dd546439c",
-  });
+const authParams = {
+  [AUTH_FIELDS.id]: "1101820705",
+  [AUTH_FIELDS.token]: "3b70bfc2a16a4b488ecfcf78a9547a0b5d8696730dd546439c",
 };
 
 export const ChatPage = () => {
@@ -36,7 +34,7 @@ export const ChatPage = () => {
 
   const chooseChat = (phone) => {
     setCurrentChatId(`${phone}@c.us`);
-    notificationsSubscribe();
+    GreenAPIController.receiveNotification(authParams);
   };
 
   return (

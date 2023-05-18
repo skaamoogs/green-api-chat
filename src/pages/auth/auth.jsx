@@ -5,7 +5,8 @@ import style from "./auth.module.scss";
 import { useNavigate } from "react-router-dom";
 import { links } from "../../App";
 import GreenAPIController from "../../controllers/greenAPI.controller";
-import { AUTH_FIELDS } from "../../api/greenAPI.api";
+import { API_HOST, AUTH_FIELDS, createURL } from "../../api/greenAPI.api";
+import axios from "axios";
 
 const inputs = [
   {
@@ -24,10 +25,21 @@ export const Auth = () => {
   const [formFields, setFormFields] = useState({});
   const navigate = useNavigate();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    GreenAPIController.setSettings(formFields);
-    //navigate(links.chat);
+    /*     const endpoint = createURL("SetSettings", formFields);
+    const url = `${API_HOST}${endpoint}`;
+    const response = await axios.post(url, {
+      webhookUrl: "",
+      outgoingWebhook: "yes",
+      stateWebhook: "yes",
+      incomingWebhook: "yes",
+    }); */
+    //console.log(response)
+    const isGoodResponse = await GreenAPIController.setSettings(formFields);
+    if (isGoodResponse) {
+      navigate(links.chat);
+    }
   };
 
   const changeInputHandler = (event) => {

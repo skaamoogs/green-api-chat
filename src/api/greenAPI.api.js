@@ -1,13 +1,13 @@
 import RequestTransport from "../service/request/request";
 
-const API_HOST = "https://api.green-api.com/waInstance";
+export const API_HOST = "https://api.green-api.com/waInstance";
 
 export const AUTH_FIELDS = {
   id: "idInstance",
   token: "apiTokenInstance",
 };
 
-const createURL = (methodName, authParams) =>
+export const createURL = (methodName, authParams) =>
   `${authParams[AUTH_FIELDS.id]}/${methodName}/${authParams[AUTH_FIELDS.token]}`;
 
 class GreenAPI extends RequestTransport {
