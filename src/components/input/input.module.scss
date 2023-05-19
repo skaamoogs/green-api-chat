@@ -7,14 +7,6 @@
   @include text-md;
 }
 
-.form {
-  color: $text-additional;
-}
-
-.chat {
-  @include text-md;
-}
-
 .input {
   @include text-md;
   @include font-family;
@@ -26,10 +18,25 @@
   }
 
   &_chat {
-    margin-top: 10px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     background-color: $bg-additional;
     height: 32px;
     border-radius: 12px;
   }
 }
+
+.form {
+  color: $text-additional;
+}
+
+.chat {
+  @include text-md;
+  margin-bottom: 15px;
+}
+
+.error {
+  @include text-sm;
+  color: $text-error;
+  margin: 0 0 8px 0;
+}
+

@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Button } from "../../components/button/button";
 import { Input, INPUT_VARIATIONS } from "../../components/input/input";
 import style from "./auth.module.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { links } from "../../App";
 import GreenAPIController from "../../controllers/greenAPI.controller";
 import { AUTH_FIELDS } from "../../api/greenAPI.api";
+import { storageService } from "../../service/storage/storage";
 
 const inputs = [
   {
@@ -29,6 +30,8 @@ export const Auth = () => {
     event.preventDefault();
     const isGoodResponse = await GreenAPIController.setSettings(formFields);
     if (isGoodResponse) {
+      storageService().set("currentUser", formFields);
+      console.log("navigate to chat");
       navigate(links.chat);
     } else {
       setError(true);
@@ -63,6 +66,9 @@ export const Auth = () => {
             Войти
           </Button>
         </form>
+        <Link to={links.chat} className={style.link}>
+          В чат
+        </Link>
       </div>
     </div>
   );

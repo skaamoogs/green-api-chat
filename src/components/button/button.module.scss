@@ -11,6 +11,7 @@
   cursor: pointer;
   background-color: $main-color;
   @include text-md;
+  color: $text-base;
 
   &:hover {
     background-color: $main-hover-color;

@@ -1,0 +1,12 @@
+@import "../../../styles/globals.scss";
+
+.container {
+  height: 50px;
+  border-bottom: 1px solid $bg-additional;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+}

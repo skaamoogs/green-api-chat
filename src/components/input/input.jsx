@@ -16,11 +16,15 @@ export const Input = (props) => {
     required,
     className,
     variation,
+    error
   } = props;
 
   return (
     <div className={`${style.container} ${className}`}>
       {label && <label className={`${style[variation]}`}>{label}</label>}
+      {error && (
+        <p className={style.error}>Номер должен содержать от 10 до 15 цифр</p>
+      )}
       <input
         className={`${style.input} ${style[`input_${variation}`]}`}
         value={value}

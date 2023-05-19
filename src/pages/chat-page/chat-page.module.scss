@@ -5,10 +5,67 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  color: $text-base;
 }
 
 .chatListContainer {
   width: 400px;
   height: 100%;
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
+  padding: 0 10px;
+}
+
+.chatList {
+  margin-top: 15px;
+  border-top: 1px solid $bg-additional;
+}
+
+.linkContainer {
+  text-align: right;
+  padding: 20px 0;
+}
+
+.link {
+  color: $text-additional;
+  @include text-sm;
+  text-decoration: none;
+
+}
+
+.hint {
+  @include text-sm;
+  margin: 5px 0 20px;
+}
+
+.chatArea {
+  padding: 10px 20px;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex-grow: 2;
+}
+
+.sendMessageContainer {
+  display: flex;
+}
+
+.sendMessage {
+  flex-grow: 2;
+}
+
+.sendIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.sendButton {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
