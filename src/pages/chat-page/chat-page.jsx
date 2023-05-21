@@ -33,7 +33,7 @@ export const ChatPage = () => {
     if (currentUser) {
       GreenAPIController.receiveNotification(currentUser, notificationHandler);
     }
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     storageService().set("messages", messages);
