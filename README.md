@@ -6,7 +6,7 @@
 <img width="300" alt="Screenshot 2023-05-21 at 16 44 09" src="https://github.com/skaamoogs/green-api-chat/assets/94950998/bbee36b1-2313-45bc-b279-a9cb085677ae">
 
 Страница чата:
-<img width="1200" alt="Screenshot 2023-05-21 at 16 44 03" src="https://github.com/skaamoogs/green-api-chat/assets/94950998/42f55609-d83f-4b4b-8667-88ca9a186ce7">
+<img width="1400" alt="Screenshot 2023-05-21 at 16 44 03" src="https://github.com/skaamoogs/green-api-chat/assets/94950998/42f55609-d83f-4b4b-8667-88ca9a186ce7">
 
 
 ## Доступные команды
