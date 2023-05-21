@@ -6,7 +6,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
+  padding: 0 20px;
+
+  &:hover {
+    background-color: $bg-additional;
+  }
 }
 
-.title {
+.selected {
+  background-color: $bg-additional;
 }

@@ -8,7 +8,9 @@ export const AUTH_FIELDS = {
 };
 
 export const createURL = (methodName, authParams) =>
-  `${authParams[AUTH_FIELDS.id]}/${methodName}/${authParams[AUTH_FIELDS.token]}`;
+  `${authParams[AUTH_FIELDS.id]}/${methodName}/${
+    authParams[AUTH_FIELDS.token]
+  }`;
 
 class GreenAPI extends RequestTransport {
   constructor() {
@@ -18,6 +20,11 @@ class GreenAPI extends RequestTransport {
   setSettings(authParams, data) {
     const url = createURL("SetSettings", authParams);
     return this.post(url, { data });
+  }
+
+  getAccountState(authParams) {
+    const url = createURL("getStateInstance", authParams);
+    return this.get(url);
   }
 
   sendMessage(authParams, data) {

@@ -1,0 +1,46 @@
+@import "../../../styles/globals.scss";
+@import "../../../styles/mixin.scss";
+
+.container {
+  margin: 10px 0;
+  padding: 11px;
+  max-width: 65%;
+  display: flex;
+  align-items: flex-end;
+  width: max-content;
+  color: $text-base;
+}
+
+.text {
+  @include text-md;
+  margin: 0;
+}
+
+.info {
+  margin-left: 15px;
+  display: flex;
+}
+
+.time {
+  margin-left: 4px;
+  color: $text-additional;
+  @include text-sm;
+}
+
+.status {
+  margin-left: 3px;
+}
+
+.outgoing {
+  background-color: #d9fdd2;
+  border-radius: 12px;
+  border-bottom-right-radius: 0%;
+  margin-left: auto;
+}
+
+.incoming {
+  background-color: $bg-additional;
+  border-radius: 12px;
+  border-top-left-radius: 0%;
+  margin-right: auto;
+}

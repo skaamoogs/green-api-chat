@@ -65,9 +65,6 @@ export default class RequestTransport {
   request = async (url, options = {}, timeout = TIMEOUT_DELAY) => {
     const { headers = {}, method, data } = options;
 
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-
     if (!(data instanceof FormData)) {
       headers["content-type"] = "application/json";
     }
@@ -76,10 +73,7 @@ export default class RequestTransport {
       method,
       headers,
       body: data instanceof FormData ? data : JSON.stringify(data),
-      signal: controller.signal,
     });
-
-    clearTimeout(id);
 
     return response;
   };
