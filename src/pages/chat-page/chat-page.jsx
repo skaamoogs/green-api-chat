@@ -4,7 +4,7 @@ import { Input, INPUT_VARIATIONS } from "../../components/input/input";
 import GreenAPIController from "../../controllers/greenAPI.controller";
 import style from "./chat-page.module.scss";
 import { Chat } from "./chat/chat";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { links } from "../../App";
 import { storageService } from "../../service/storage/storage";
 import { formatTime } from "../../utils/helpers";

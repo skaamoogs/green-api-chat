@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import style from "./chat.module.scss";
 
 export const Chat = (props) => {
