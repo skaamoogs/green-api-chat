@@ -18,5 +18,6 @@
 Собирает проект в папку `build`.\
 Ваше приложения готово для деплоя!
 
+## Деплой
 Приложенние развернуто на сервисе `netlify` по адресу [https://green-api-chat-skaamoogs.netlify.app](https://green-api-chat-skaamoogs.netlify.app).
 
